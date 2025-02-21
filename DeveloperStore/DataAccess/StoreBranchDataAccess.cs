@@ -10,36 +10,35 @@ namespace DeveloperStore.DataAccess
         {
             _context = context;
         }
-        public List<Customer> GetAllCustomers()
+        public List<StoreBranch> GetAllStoreBranches()
         {
-            return _context.Customers.ToList();
+            return _context.StoreBranches.ToList();
         }
-        public Customer GetCustomerById(Guid id)
+        public StoreBranch GetStoreBranchById(Guid id)
         {
-            return _context.Customers.FirstOrDefault(c => c.Id == id);
+            return _context.StoreBranches.FirstOrDefault(c => c.Id == id);
         }
-        public void CreateCustomer(Customer customer)
+        public void CreateStoreBranch(StoreBranch storeBranch)
         {
-            _context.Customers.Add(customer);
+            _context.StoreBranches.Add(storeBranch);
             _context.SaveChanges();
         }
-        public bool UpdateCustomer(Guid id, Customer updatedCustomer)
+        public bool UpdateStoreBranch(Guid id, StoreBranch updatedBranch)
         {
-            Customer customer = _context.Customers.FirstOrDefault(c => c.Id == id);
-            if (customer == null) return false;
+            StoreBranch storeBranch = _context.StoreBranches.FirstOrDefault(c => c.Id == id);
+            if (storeBranch == null) return false;
 
-            customer.Name = updatedCustomer.Name;
-            customer.Email = updatedCustomer.Email;
-            customer.PhoneNumber = updatedCustomer.PhoneNumber;
+            storeBranch.Name = updatedBranch.Name;
+            storeBranch.Address = updatedBranch.Address;
 
             _context.SaveChanges();
             return true;
         }
-        public bool DeleteCustomer(Guid id)
+        public bool DeleteStoreBranch(Guid id)
         {
-            Customer customer = _context.Customers.FirstOrDefault(c => c.Id == id);
-            if (customer == null) return false;
-            _context.Customers.Remove(customer);
+            StoreBranch storeBranch = _context.StoreBranches.FirstOrDefault(c => c.Id == id);
+            if (storeBranch == null) return false;
+            _context.StoreBranches.Remove(storeBranch);
             _context.SaveChanges();
             return true;
         }
