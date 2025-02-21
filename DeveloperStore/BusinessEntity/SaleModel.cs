@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DeveloperStore.BusinessEntity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DeveloperStoreAPI.Models
@@ -15,10 +16,10 @@ namespace DeveloperStoreAPI.Models
         public DateTime SaleDate { get; set; } = DateTime.UtcNow;
 
         [Required]
-        public string CustomerId { get; set; } = string.Empty; // External Identity
+        public string CustomerId { get; set; } = string.Empty;
 
         [Required]
-        public string BranchId { get; set; } = string.Empty; // External Identity
+        public string BranchId { get; set; } = string.Empty;
 
         [Required]
         public List<SaleItem> Items { get; set; } = new();
